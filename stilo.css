@@ -141,7 +141,7 @@ body main.sobreMi article {
   scroll-margin-top: 100%;
 }
 body main.sobreMi article img {
-  width: 20vw;
+  width: 30vw;
   border-radius: 5%;
   -o-object-fit: cover;
      object-fit: cover;

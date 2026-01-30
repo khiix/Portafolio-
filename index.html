@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Portafolio</title>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="stilo.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio</title>
 
-        <!-- Fonts -->
-        <link
-            href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Outfit:wght@100..700&display=swap"
-            rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="stilo.css">
 
-        <!-- Lucide Icons -->
-        <script
-            src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Outfit:wght@100..700&display=swap"
+        rel="stylesheet">
 
-        <style>
-        .icono-habilidad{
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <style>
+        .icono-habilidad {
             width: clamp(16px, 1.2vw, 20px);
             height: clamp(16px, 1.2vw, 20px);
             margin-right: 0.8vw;
@@ -26,320 +26,316 @@
             flex-shrink: 0;
         }
     </style>
-    </head>
+</head>
 
-    <body>
-        <header>
-            <nav>
-                <a class="enlaceNav" href="#sobre-mi">Sobre mí</a>
-                <a class="enlaceNav" href="#habilidades">Habilidades</a>
-                <a class="enlaceNav" href="#tecnologias">Tecnologías</a>
-                <a class="enlaceNav" href="#proyectos">Proyectos</a>
-            </nav>
+<body>
+    <header>
+        <nav>
+            <a class="enlaceNav" href="#sobre-mi">Sobre mí</a>
+            <a class="enlaceNav" href="#habilidades">Habilidades</a>
+            <a class="enlaceNav" href="#tecnologias">Tecnologías</a>
+            <a class="enlaceNav" href="#proyectos">Proyectos</a>
+        </nav>
+        <section>
+            <img src="img/logo.jpg" alt="logo">
+        </section>
+    </header>
+
+    <main class="sobreMi" id="sobre-mi">
+        <h2>Sobre Mí</h2>
+
+        <article>
             <section>
-                <img src="img/logo.jpg" alt="logo">
-            </section>
-        </header>
-
-        <main class="sobreMi" id="sobre-mi">
-            <h2>Sobre Mí</h2>
-
-            <article>
-                <section>
-                    <p>Desarrollador Full Stack Apasionado</p>
-                    <p>
-                        Con más de 5 años de experiencia en el desarrollo web,
-                        me especializo en crear aplicaciones modernas,
-                        escalables
-                        y centradas en el usuario.
-                    </p>
-                    <p>
-                        Me apasiona aprender nuevas tecnologías y resolver
-                        problemas complejos. Disfruto trabajando en equipos
-                        colaborativos.
-                    </p>
-                    <a class="botonMain" href="Curriculum_Profesional_ChristianMontes.pdf" 
-                        download="Curriculum_Profesional_ChristianMontes">Descargar CV
-                    </a>
-                </section>
-                <img src="img/escritorio.jpg" alt="foto de un escritorio">
-            </article>
-
-            <article id="articleSobreMi">
-                <a href="https://github.com/khiix" target="_blank" rel="noopener noreferrer" aria-label="Ver GitHub de Christian">
-                    <img class="botonMainIcon" src="img/github (1).png" alt="logo GitHub">
+                <p>Desarrollador Full Stack Apasionado</p>
+                <p>
+                    Con más de 5 años de experiencia en el desarrollo web,
+                    me especializo en crear aplicaciones modernas,
+                    escalables
+                    y centradas en el usuario.
+                </p>
+                <p>
+                    Me apasiona aprender nuevas tecnologías y resolver
+                    problemas complejos. Disfruto trabajando en equipos
+                    colaborativos.
+                </p>
+                <a class="botonMain" href="Curriculum_Profesional_ChristianMontes.pdf"
+                    download="Curriculum_Profesional_ChristianMontes">Descargar CV
                 </a>
-                <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Ver LinkedIn de Christian">
-                    <img class="botonMainIcon" src="img/linkedin.png" alt="logo LinkedIn">
-                </a>
-            </article>
-
-            <!-- HABILIDADES -->
-            <section id="habilidades">
-                <h3>Habilidades</h3>
-
-                <section class="habilidades-container">
-
-                    <!-- FRONTEND -->
-                    <article class="tarjeta">
-                        <h3><i data-lucide="layout"></i> Frontend</h3>
-
-                        <section class="habilidad-item">
-                            <span><i data-lucide="atom"
-                                    class="icono-habilidad"></i> React</span>
-                            <figure class="barra-progreso"><div class="progreso"
-                                    style="width:95%"></div></figure>
-                            <span>95%</span>
-                        </section>
-
-                        <section class="habilidad-item">
-                            <span><i data-lucide="file-code"
-                                    class="icono-habilidad"></i>
-                                JavaScript</span>
-                            <figure class="barra-progreso"><div class="progreso"
-                                    style="width:90%"></div></figure>
-                            <span>90%</span>
-                        </section>
-
-                        <section class="habilidad-item">
-                            <span><i data-lucide="layers"
-                                    class="icono-habilidad"></i> Vite</span>
-                            <figure class="barra-progreso"><div class="progreso"
-                                    style="width:70%"></div></figure>
-                            <span>70%</span>
-                        </section>
-
-                        <section class="habilidad-item">
-                            <span><i data-lucide="palette"
-                                    class="icono-habilidad"></i> CSS</span>
-                            <figure class="barra-progreso"><div class="progreso"
-                                    style="width:95%"></div></figure>
-                            <span>95%</span>
-                        </section>
-                    </article>
-
-                    <!-- BACKEND -->
-                    <article class="tarjeta">
-                        <h3><i data-lucide="server"></i> Backend</h3>
-
-                        <section class="habilidad-item">
-                            <span><i data-lucide="cpu"
-                                    class="icono-habilidad"></i> Node.js</span>
-                            <figure class="barra-progreso"><div class="progreso"
-                                    style="width:80%"></div></figure>
-                            <span>80%</span>
-                        </section>
-
-                        <section class="habilidad-item">
-                            <span><i data-lucide="database"
-                                    class="icono-habilidad"></i>
-                                PostgreSQL</span>
-                            <figure class="barra-progreso"><div class="progreso"
-                                    style="width:80%"></div></figure>
-                            <span>80%</span>
-                        </section>
-
-                        <section class="habilidad-item">
-                            <span><i data-lucide="database"
-                                    class="icono-habilidad"></i> MySQL</span>
-                            <figure class="barra-progreso"><div class="progreso"
-                                    style="width:95%"></div></figure>
-                            <span>95%</span>
-                        </section>
-
-                        <section class="habilidad-item">
-                            <span><i data-lucide="database"
-                                    class="icono-habilidad"></i>MariaDB</span>
-                            <figure class="barra-progreso"><div class="progreso"
-                                    style="width:75%"></div></figure>
-                            <span>75%</span>
-                        </section>
-                    </article>
-
-                    <!-- HERRAMIENTAS -->
-                    <article class="tarjeta">
-                        <h3><i data-lucide="wrench"></i> Herramientas</h3>
-
-                        <section class="habilidad-item">
-                            <span><i data-lucide="git-branch"
-                                    class="icono-habilidad"></i> Git</span>
-                            <figure class="barra-progreso"><div class="progreso"
-                                    style="width:95%"></div></figure>
-                            <span>95%</span>
-                        </section>
-
-                        <section class="habilidad-item">
-                            <span><i data-lucide="container"
-                                    class="icono-habilidad"></i> Docker</span>
-                            <figure class="barra-progreso"><div class="progreso"
-                                    style="width:75%"></div></figure>
-                            <span>75%</span>
-                        </section>
-
-                        <section class="habilidad-item">
-                            <span><i data-lucide="cloud"
-                                    class="icono-habilidad"></i> AWS</span>
-                            <figure class="barra-progreso"><div class="progreso"
-                                    style="width:80%"></div></figure>
-                            <span>80%</span>
-                        </section>
-
-                        <section class="habilidad-item">
-                            <span><i data-lucide="pen-tool"
-                                    class="icono-habilidad"></i> Figma</span>
-                            <figure class="barra-progreso"><div class="progreso"
-                                    style="width:85%"></div></figure>
-                            <span>85%</span>
-                        </section>
-                    </article>
-
-                </section>
             </section>
+            <img src="img/cm.png" alt="foto de un escritorio">
+        </article>
 
-            <!-- TECNOLOGÍAS -->
-            <section id="tecnologias">
-                <h3>Tecnologías</h3>
-                <div class="tecnologias-grid">
-                    <span class="tecnica">React</span>
-                    <span class="tecnica">JavaScript</span>
-                    <span class="tecnica">Node.js</span>
-                    <span class="tecnica">PostgreSQL</span>
-                    <span class="tecnica">MongoDB</span>
-                    <span class="tecnica">Tailwind CSS</span>
-                    <span class="tecnica">Git</span>
-                    <span class="tecnica">Docker</span>
-                    <span class="tecnica">AWS</span>
-                    <span class="tecnica">Figma</span>
-                    <span class="tecnica">Vite</span>
-                    <span class="tecnica">C#</span>
-                    <span class="tecnica">MySQL</span>
-                    <span class="tecnica">MariaDB</span>
+        <article id="articleSobreMi">
+            <a href="https://github.com/khiix" target="_blank" rel="noopener noreferrer"
+                aria-label="Ver GitHub de Christian">
+                <img class="botonMainIcon" src="img/github (1).png" alt="logo GitHub">
+            </a>
+            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Ver LinkedIn de Christian">
+                <img class="botonMainIcon" src="img/linkedin.png" alt="logo LinkedIn">
+            </a>
+        </article>
+
+        <!-- HABILIDADES -->
+        <section id="habilidades">
+            <h3>Habilidades</h3>
+
+            <section class="habilidades-container">
+
+                <!-- FRONTEND -->
+                <article class="tarjeta">
+                    <h3><i data-lucide="layout"></i> Frontend</h3>
+
+                    <section class="habilidad-item">
+                        <span><i data-lucide="atom" class="icono-habilidad"></i> React</span>
+                        <figure class="barra-progreso">
+                            <div class="progreso" style="width:95%"></div>
+                        </figure>
+                        <span>95%</span>
+                    </section>
+
+                    <section class="habilidad-item">
+                        <span><i data-lucide="file-code" class="icono-habilidad"></i>
+                            JavaScript</span>
+                        <figure class="barra-progreso">
+                            <div class="progreso" style="width:90%"></div>
+                        </figure>
+                        <span>90%</span>
+                    </section>
+
+                    <section class="habilidad-item">
+                        <span><i data-lucide="layers" class="icono-habilidad"></i> Vite</span>
+                        <figure class="barra-progreso">
+                            <div class="progreso" style="width:70%"></div>
+                        </figure>
+                        <span>70%</span>
+                    </section>
+
+                    <section class="habilidad-item">
+                        <span><i data-lucide="palette" class="icono-habilidad"></i> CSS</span>
+                        <figure class="barra-progreso">
+                            <div class="progreso" style="width:95%"></div>
+                        </figure>
+                        <span>95%</span>
+                    </section>
+                </article>
+
+                <!-- BACKEND -->
+                <article class="tarjeta">
+                    <h3><i data-lucide="server"></i> Backend</h3>
+
+                    <section class="habilidad-item">
+                        <span><i data-lucide="cpu" class="icono-habilidad"></i> Node.js</span>
+                        <figure class="barra-progreso">
+                            <div class="progreso" style="width:80%"></div>
+                        </figure>
+                        <span>80%</span>
+                    </section>
+
+                    <section class="habilidad-item">
+                        <span><i data-lucide="database" class="icono-habilidad"></i>
+                            PostgreSQL</span>
+                        <figure class="barra-progreso">
+                            <div class="progreso" style="width:80%"></div>
+                        </figure>
+                        <span>80%</span>
+                    </section>
+
+                    <section class="habilidad-item">
+                        <span><i data-lucide="database" class="icono-habilidad"></i> MySQL</span>
+                        <figure class="barra-progreso">
+                            <div class="progreso" style="width:95%"></div>
+                        </figure>
+                        <span>95%</span>
+                    </section>
+
+                    <section class="habilidad-item">
+                        <span><i data-lucide="database" class="icono-habilidad"></i>MariaDB</span>
+                        <figure class="barra-progreso">
+                            <div class="progreso" style="width:75%"></div>
+                        </figure>
+                        <span>75%</span>
+                    </section>
+                </article>
+
+                <!-- HERRAMIENTAS -->
+                <article class="tarjeta">
+                    <h3><i data-lucide="wrench"></i> Herramientas</h3>
+
+                    <section class="habilidad-item">
+                        <span><i data-lucide="git-branch" class="icono-habilidad"></i> Git</span>
+                        <figure class="barra-progreso">
+                            <div class="progreso" style="width:95%"></div>
+                        </figure>
+                        <span>95%</span>
+                    </section>
+
+                    <section class="habilidad-item">
+                        <span><i data-lucide="container" class="icono-habilidad"></i> Docker</span>
+                        <figure class="barra-progreso">
+                            <div class="progreso" style="width:75%"></div>
+                        </figure>
+                        <span>75%</span>
+                    </section>
+
+                    <section class="habilidad-item">
+                        <span><i data-lucide="cloud" class="icono-habilidad"></i> AWS</span>
+                        <figure class="barra-progreso">
+                            <div class="progreso" style="width:80%"></div>
+                        </figure>
+                        <span>80%</span>
+                    </section>
+
+                    <section class="habilidad-item">
+                        <span><i data-lucide="pen-tool" class="icono-habilidad"></i> Figma</span>
+                        <figure class="barra-progreso">
+                            <div class="progreso" style="width:85%"></div>
+                        </figure>
+                        <span>85%</span>
+                    </section>
+                </article>
+
+            </section>
+        </section>
+
+        <!-- TECNOLOGÍAS -->
+        <section id="tecnologias">
+            <h3>Tecnologías</h3>
+            <div class="tecnologias-grid">
+                <span class="tecnica">React</span>
+                <span class="tecnica">JavaScript</span>
+                <span class="tecnica">Node.js</span>
+                <span class="tecnica">PostgreSQL</span>
+                <span class="tecnica">MongoDB</span>
+                <span class="tecnica">Tailwind CSS</span>
+                <span class="tecnica">Git</span>
+                <span class="tecnica">Docker</span>
+                <span class="tecnica">AWS</span>
+                <span class="tecnica">Figma</span>
+                <span class="tecnica">Vite</span>
+                <span class="tecnica">C#</span>
+                <span class="tecnica">MySQL</span>
+                <span class="tecnica">MariaDB</span>
+            </div>
+        </section>
+        <!-- PROYECTOS -->
+
+        <section id="proyectos">
+            <h3>Proyectos</h3>
+            <div class="carousel" aria-roledescription="carousel">
+
+                <!-- BOTÓN IZQUIERDA -->
+                <button class="carousel__button prev" aria-label="Proyecto anterior">
+                    ‹
+                </button>
+
+                <!-- TRACK -->
+                <div class="carousel__track-container">
+                    <ul class="carousel__track">
+
+                        <!-- SLIDE 1 -->
+                        <li class="carousel__slide">
+                            <article class="proyecto-card">
+                                <figure class="proyecto-media">
+                                    <img src="img/quickpos_card.png" alt="QuickPos">
+
+                                    <div class="proyecto-hover">
+                                        <a class="proyecto-icon" href="#" aria-label="Demo">
+                                            🔗
+                                        </a>
+                                        <a class="proyecto-icon" href="#" aria-label="GitHub">
+                                            🐙
+                                        </a>
+                                    </div>
+                                </figure>
+
+                                <div class="proyecto-body">
+                                    <h4>QuickPos — TPV para Bares</h4>
+                                    <p>
+                                        Aplicación TPV para gestionar pedidos, mesas y cobros
+                                        en bares y cafeterías.
+                                    </p>
+                                    <ul class="proyecto-tags">
+                                        <li>TPV</li>
+                                        <li>Gestión</li>
+                                        <li>Bares</li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </li>
+
+                        <!-- SLIDE 2 -->
+                        <li class="carousel__slide">
+                            <article class="proyecto-card">
+                                <figure class="proyecto-media">
+                                    <img src="img/beterinariaFondo.png" alt="Clínica Veterinaria">
+
+                                    <div class="proyecto-hover">
+                                        <a class="proyecto-icon" href="#" aria-label="Web">
+                                            🔗
+                                        </a>
+                                    </div>
+                                </figure>
+
+                                <div class="proyecto-body">
+                                    <h4>Clínica Veterinaria Ausiàs March</h4>
+                                    <p>
+                                        Web desarrollada en WordPress para clínica veterinaria
+                                        en Valencia.
+                                    </p>
+                                    <ul class="proyecto-tags">
+                                        <li>WordPress</li>
+                                        <li>Diseño Web</li>
+                                        <li>Responsive</li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </li>
+
+                        <!-- SLIDE 3 -->
+                        <li class="carousel__slide">
+                            <article class="proyecto-card">
+                                <figure class="proyecto-media">
+                                    <img src="img/barberia_los_hermanos_card.png" alt="Barbería">
+
+                                    <div class="proyecto-hover">
+                                        <a class="proyecto-icon" href="#">
+                                            🔗
+                                        </a>
+                                    </div>
+                                </figure>
+
+                                <div class="proyecto-body">
+                                    <h4>Los Hermanos — Barbería</h4>
+                                    <p>
+                                        Web para barbería con reservas y diseño mobile-first.
+                                    </p>
+                                    <ul class="proyecto-tags">
+                                        <li>Reservas</li>
+                                        <li>Diseño Web</li>
+                                        <li>Barbería</li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </li>
+
+                    </ul>
                 </div>
-            </section>
-            <!-- PROYECTOS -->
-            <section id="proyectos">
-                <h3>Proyectos</h3>
 
-                <section class="proyectos-grid">
+                <!-- BOTÓN DERECHA -->
+                <button class="carousel__button next" aria-label="Siguiente proyecto">
+                    ›
+                </button>
 
-                    <!-- PROYECTO 1 -->
-                    <article class="proyecto-card">
-                        <figure class="proyecto-media">
-                            <img src="img/quickpos_card.png"
-                                alt="QuickPos - TPV para Bares">
+                <!-- INDICADORES -->
+                <div class="carousel__nav"></div>
+            </div>
 
-                            <section class="proyecto-hover"
-                                aria-label="Acciones del proyecto QuickPos">
-                                <a class="proyecto-icon" href="#"
-                                    target="_blank" rel="noreferrer"
-                                    aria-label="Ver demo de QuickPos">
-                                    <i data-lucide="external-link"></i>
-                                </a>
-                                <a class="proyecto-icon" href="#"
-                                    target="_blank" rel="noreferrer"
-                                    aria-label="Ver GitHub de QuickPos">
-                                    <i data-lucide="github"></i>
-                                </a>
-                            </section>
-                        </figure>
-
-                        <section class="proyecto-body">
-                            <h4>QuickPos — TPV para Bares</h4>
-                            <p>
-                                Aplicación TPV para gestionar pedidos, mesas y
-                                cobros en bares y cafeterías.
-                                Diseñada para ser rápida, intuitiva y adaptada
-                                al ritmo real del local.
-                            </p>
-
-                            <ul class="proyecto-tags">
-                                <li>TPV</li>
-                                <li>Gestión</li>
-                                <li>Bares</li>
-                            </ul>
-                        </section>
-                    </article>
-
-                    <!-- PROYECTO 2 -->
-                    <article class="proyecto-card">
-                        <figure class="proyecto-media">
-                            <img src="img//clinica_ausiasmarch_card.png"
-                                alt="Clínica Veterinaria Ausiàs March - WordPress">
-
-                            <section class="proyecto-hover"
-                                aria-label="Acciones del proyecto Veterinaria">
-                                <a class="proyecto-icon"
-                                    href="https://veterinarioausiasmarch.es/"
-                                    target="_blank" rel="noreferrer"
-                                    aria-label="Ver web de la clínica">
-                                    <i data-lucide="external-link"></i>
-                                </a>
-                                <a class="proyecto-icon" href="#"
-                                    target="_blank" rel="noreferrer"
-                                    aria-label="Ver repositorio o recursos del proyecto">
-                                    <i data-lucide="github"></i>
-                                </a>
-                            </section>
-                        </figure>
-
-                        <section class="proyecto-body">
-                            <h4>Clínica Veterinaria Ausiàs March</h4>
-                            <p>
-                                Web desarrollada en WordPress para una clínica
-                                veterinaria en Valencia.
-                                Diseño moderno, servicios claros y contacto
-                                optimizado.
-                            </p>
-
-                            <ul class="proyecto-tags">
-                                <li>WordPress</li>
-                                <li>Diseño Web</li>
-                                <li>Responsive</li>
-                            </ul>
-                        </section>
-                    </article>
-
-                    <!-- PROYECTO 3 -->
-                    <article class="proyecto-card">
-                        <figure class="proyecto-media">
-                            <img src="img/proyecto_en_proceso_card.png"
-                                alt="Proyecto en desarrollo">
-
-                            <section class="proyecto-hover"
-                                aria-label="Acciones del proyecto en desarrollo">
-                                <a class="proyecto-icon" href="#"
-                                    target="_blank" rel="noreferrer"
-                                    aria-label="Ver demo del proyecto">
-                                    <i data-lucide="external-link"></i>
-                                </a>
-                                <a class="proyecto-icon" href="#"
-                                    target="_blank" rel="noreferrer"
-                                    aria-label="Ver GitHub del proyecto">
-                                    <i data-lucide="github"></i>
-                                </a>
-                            </section>
-                        </figure>
-
-                        <section class="proyecto-body">
-                            <h4>Proyecto en Desarrollo</h4>
-                            <p>
-                                Proyecto personal en preparación para seguir
-                                mejorando habilidades en desarrollo web
-                                y diseño de interfaces modernas.
-                            </p>
-
-                            <ul class="proyecto-tags">
-                                <li>Aprendizaje</li>
-                            </ul>
-                        </section>
-                    </article>
-
-                </section>
-            </section>
-
-        </main>
-        <script>
+        </section>
+    </main>
+    <script src="script.js"></script>
+    <script>
         lucide.createIcons();
     </script>
-    </body>
+</body>
+
 </html>

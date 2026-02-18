@@ -1,139 +1,180 @@
-const header = document.querySelector('header');
-const menuToggle = document.querySelector('.menu-toggle');
-const siteNav = document.querySelector('#site-nav');
-const navLinks = document.querySelectorAll('#site-nav a');
+const MOBILE_BREAKPOINT = 768;
+const CAROUSEL_INTERVAL_MS = 30000;
 
-if (header && menuToggle && siteNav) {
+const query = (selector, root = document) => root.querySelector(selector);
+const queryAll = (selector, root = document) => Array.from(root.querySelectorAll(selector));
+
+function initMobileMenu() {
+  const header = query("header");
+  const menuToggle = query(".menu-toggle");
+  const siteNav = query("#site-nav");
+
+  if (!header || !menuToggle || !siteNav) return;
+
+  const navLinks = queryAll("a", siteNav);
+
   const closeMenu = () => {
-    header.classList.remove('menu-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
+    header.classList.remove("menu-open");
+    menuToggle.setAttribute("aria-expanded", "false");
   };
 
-  menuToggle.addEventListener('click', () => {
-    const isOpen = header.classList.toggle('menu-open');
-    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  menuToggle.addEventListener("click", () => {
+    const isOpen = header.classList.toggle("menu-open");
+    menuToggle.setAttribute("aria-expanded", String(isOpen));
   });
 
   navLinks.forEach((link) => {
-    link.addEventListener('click', closeMenu);
+    link.addEventListener("click", closeMenu);
   });
 
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 768) closeMenu();
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > MOBILE_BREAKPOINT) closeMenu();
   });
 }
 
-const skillCards = Array.from(document.querySelectorAll('#habilidades .tarjeta'));
-const skillsMobileMq = window.matchMedia('(max-width: 768px)');
+function initSkillsAccordion() {
+  const skillCards = queryAll("#habilidades .tarjeta");
+  if (!skillCards.length) return;
 
-if (skillCards.length) {
-  const syncSkillAria = () => {
+  const mobileMq = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT}px)`);
+
+  const getTitle = (card) => query("h3", card);
+
+  const syncAria = () => {
     skillCards.forEach((card) => {
-      const title = card.querySelector('h3');
+      const title = getTitle(card);
       if (!title) return;
-      title.setAttribute('aria-expanded', String(card.classList.contains('is-open')));
+      title.setAttribute("aria-expanded", String(card.classList.contains("is-open")));
     });
   };
 
-  const toggleSkillCard = (targetCard) => {
-    if (!skillsMobileMq.matches) return;
+  const toggleCard = (targetCard) => {
+    if (!mobileMq.matches) return;
+
     skillCards.forEach((card) => {
       if (card === targetCard) {
-        card.classList.toggle('is-open');
+        card.classList.toggle("is-open");
       } else {
-        card.classList.remove('is-open');
+        card.classList.remove("is-open");
       }
     });
-    syncSkillAria();
+
+    syncAria();
   };
 
-  const initSkillsAccordion = () => {
+  const bindCard = (card) => {
+    if (card.dataset.accBound) return;
+
+    const title = getTitle(card);
+    if (!title) return;
+
+    title.addEventListener("click", () => toggleCard(card));
+    title.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      toggleCard(card);
+    });
+
+    card.dataset.accBound = "1";
+  };
+
+  const applyMode = () => {
     skillCards.forEach((card) => {
-      const title = card.querySelector('h3');
+      bindCard(card);
+      const title = getTitle(card);
       if (!title) return;
 
-      if (!card.dataset.accBound) {
-        title.addEventListener('click', () => toggleSkillCard(card));
-        title.addEventListener('keydown', (event) => {
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            toggleSkillCard(card);
-          }
-        });
-        card.dataset.accBound = '1';
-      }
-
-      if (skillsMobileMq.matches) {
-        title.setAttribute('role', 'button');
-        title.setAttribute('tabindex', '0');
+      if (mobileMq.matches) {
+        title.setAttribute("role", "button");
+        title.setAttribute("tabindex", "0");
       } else {
-        card.classList.remove('is-open');
-        title.removeAttribute('role');
-        title.removeAttribute('tabindex');
-        title.removeAttribute('aria-expanded');
+        card.classList.remove("is-open");
+        title.removeAttribute("role");
+        title.removeAttribute("tabindex");
+        title.removeAttribute("aria-expanded");
       }
     });
-    if (skillsMobileMq.matches) syncSkillAria();
+
+    if (mobileMq.matches) syncAria();
   };
 
-  initSkillsAccordion();
-  window.addEventListener('resize', initSkillsAccordion);
+  applyMode();
+  window.addEventListener("resize", applyMode);
 }
 
-const track = document.querySelector('.carousel__track');
-const nav = document.querySelector('.carousel__nav');
-const nextBtn = document.querySelector('.carousel__button.next');
-const prevBtn = document.querySelector('.carousel__button.prev');
+function initProjectsCarousel() {
+  const track = query(".carousel__track");
+  const nav = query(".carousel__nav");
+  const nextBtn = query(".carousel__button.next");
+  const prevBtn = query(".carousel__button.prev");
 
-if (!track || !nav || !nextBtn || !prevBtn) {
-  console.warn("Carrusel: falta algún elemento en el HTML");
-} else {
+  if (!track || !nav || !nextBtn || !prevBtn) {
+    console.warn("Carrusel: falta algún elemento en el HTML");
+    return;
+  }
+
   const slides = Array.from(track.children);
+  if (!slides.length) return;
+
   let currentIndex = 0;
-  let timer = null;
+  let timerId = null;
 
-  // Crear indicadores
-  slides.forEach((_, i) => {
-    const dot = document.createElement('button');
-    dot.classList.add('carousel__indicator');
-    if (i === 0) dot.classList.add('is-selected');
+  const moveToSlide = (index, dots) => {
+    track.style.transform = `translateX(-${index * 100}%)`;
+    dots[currentIndex].classList.remove("is-selected");
+    dots[index].classList.add("is-selected");
+    currentIndex = index;
+  };
+
+  slides.forEach((_, index) => {
+    const dot = document.createElement("button");
+    dot.classList.add("carousel__indicator");
+    if (index === 0) dot.classList.add("is-selected");
     nav.appendChild(dot);
-
-    dot.addEventListener('click', () => {
-      moveToSlide(i);
-      resetAuto();
-    });
   });
 
   const dots = Array.from(nav.children);
 
-  function moveToSlide(index) {
-    track.style.transform = `translateX(-${index * 100}%)`;
-    dots[currentIndex].classList.remove('is-selected');
-    dots[index].classList.add('is-selected');
-    currentIndex = index;
-  }
+  const goNext = () => moveToSlide((currentIndex + 1) % slides.length, dots);
+  const goPrev = () => moveToSlide((currentIndex - 1 + slides.length) % slides.length, dots);
 
-  nextBtn.addEventListener('click', () => {
-    moveToSlide((currentIndex + 1) % slides.length);
-    resetAuto();
-  });
+  const startAuto = () => {
+    timerId = setInterval(goNext, CAROUSEL_INTERVAL_MS);
+  };
 
-  prevBtn.addEventListener('click', () => {
-    moveToSlide((currentIndex - 1 + slides.length) % slides.length);
-    resetAuto();
-  });
-
-  function startAuto() {
-    timer = setInterval(() => {
-      moveToSlide((currentIndex + 1) % slides.length);
-    }, 30000);
-  }
-
-  function resetAuto() {
-    clearInterval(timer);
+  const resetAuto = () => {
+    clearInterval(timerId);
     startAuto();
-  }
+  };
+
+  nextBtn.addEventListener("click", () => {
+    goNext();
+    resetAuto();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    goPrev();
+    resetAuto();
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener("click", () => {
+      moveToSlide(index, dots);
+      resetAuto();
+    });
+  });
 
   startAuto();
+}
+
+function boot() {
+  initMobileMenu();
+  initSkillsAccordion();
+  initProjectsCarousel();
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", boot);
+} else {
+  boot();
 }

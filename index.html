@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -30,15 +30,24 @@
 
 <body>
     <header>
-        <nav>
+        <section class="header-controls">
+            <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"
+                aria-controls="site-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <img src="img/logo.jpg" alt="logo">
+        </section>
+        <nav id="site-nav">
+            <div class="nav-brand" aria-hidden="true">
+                <img src="img/logo.jpg" alt="logo">
+            </div>
             <a class="enlaceNav" href="#sobre-mi">Sobre mí</a>
             <a class="enlaceNav" href="#habilidades">Habilidades</a>
             <a class="enlaceNav" href="#tecnologias">Tecnologías</a>
             <a class="enlaceNav" href="#proyectos">Proyectos</a>
         </nav>
-        <section>
-            <img src="img/logo.jpg" alt="logo">
-        </section>
     </header>
 
     <main class="sobreMi" id="sobre-mi">
@@ -225,7 +234,7 @@
 
                 <!-- BOTÓN IZQUIERDA -->
                 <button class="carousel__button prev" aria-label="Proyecto anterior">
-                    ‹
+                    &lsaquo;
                 </button>
 
                 <!-- TRACK -->
@@ -240,20 +249,21 @@
 
                                     <div class="proyecto-hover">
                                         <a class="proyecto-icon" href="#" aria-label="Demo">
-                                            🔗
+                                            &#128279;
                                         </a>
                                         <a class="proyecto-icon" href="#" aria-label="GitHub">
-                                            🐙
+                                            &#128025;
                                         </a>
                                     </div>
                                 </figure>
 
                                 <div class="proyecto-body">
-                                    <h4>QuickPos — TPV para Bares</h4>
+                                    <h4>QuickPos - TPV para Bares</h4>
                                     <p>
                                         Aplicación TPV para gestionar pedidos, mesas y cobros
                                         en bares y cafeterías.
                                     </p>
+                                    <p>En proceso de desarrollo.</p>
                                     <ul class="proyecto-tags">
                                         <li>TPV</li>
                                         <li>Gestión</li>
@@ -267,26 +277,33 @@
                         <li class="carousel__slide">
                             <article class="proyecto-card">
                                 <figure class="proyecto-media">
-                                    <img src="img/beterinariaFondo.png" alt="Clínica Veterinaria">
+                                    <img src="img/r6Proyecto.png" alt="R6 TierList">
 
                                     <div class="proyecto-hover">
-                                        <a class="proyecto-icon" href="#" aria-label="Web">
-                                            🔗
+                                        <a class="proyecto-icon" href="https://github.com/khiix/r6-tierlist"
+                                            target="_blank" rel="noopener noreferrer" aria-label="GitHub R6 TierList">
+                                            &#128025;
                                         </a>
                                     </div>
                                 </figure>
 
                                 <div class="proyecto-body">
-                                    <h4>Clínica Veterinaria Ausiàs March</h4>
+                                    <h4>R6 TierList</h4>
                                     <p>
-                                        Web desarrollada en WordPress para clínica veterinaria
-                                        en Valencia.
+                                        Proyecto web para organizar y visualizar una tier list de operadores
+                                        de Rainbow Six Siege.
                                     </p>
                                     <ul class="proyecto-tags">
-                                        <li>WordPress</li>
-                                        <li>Diseño Web</li>
+                                        <li>UI</li>
+                                        <li>Tier List</li>
                                         <li>Responsive</li>
                                     </ul>
+                                    <div class="proyecto-actions" aria-label="Enlaces del proyecto">
+                                        <a class="proyecto-action" href="https://github.com/khiix/r6-tierlist"
+                                            target="_blank" rel="noopener noreferrer">
+                                            GitHub
+                                        </a>
+                                    </div>
                                 </div>
                             </article>
                         </li>
@@ -299,13 +316,13 @@
 
                                     <div class="proyecto-hover">
                                         <a class="proyecto-icon" href="#">
-                                            🔗
+                                            &#128279;
                                         </a>
                                     </div>
                                 </figure>
 
                                 <div class="proyecto-body">
-                                    <h4>Los Hermanos — Barbería</h4>
+                                    <h4>Los Hermanos - Barbería</h4>
                                     <p>
                                         Web para barbería con reservas y diseño mobile-first.
                                     </p>
@@ -336,11 +353,70 @@
 
                 <!-- BOTÓN DERECHA -->
                 <button class="carousel__button next" aria-label="Siguiente proyecto">
-                    ›
+                    &rsaquo;
                 </button>
 
                 <!-- INDICADORES -->
                 <div class="carousel__nav"></div>
+            </div>
+
+            <div class="proyectos-mobile-grid" aria-label="Proyectos en tarjetas para móvil">
+                <article class="proyecto-card-mobile">
+                    <figure class="proyecto-media-mobile">
+                        <img src="img/quickpos_card.png" alt="QuickPos">
+                    </figure>
+                    <div class="proyecto-body-mobile">
+                        <h4>QuickPos - TPV para Bares</h4>
+                        <p>Aplicación TPV para gestionar pedidos, mesas y cobros en bares y cafeterías.</p>
+                        <p>En proceso de desarrollo.</p>
+                        <ul class="proyecto-tags-mobile">
+                            <li>TPV</li>
+                            <li>Gestión</li>
+                            <li>Bares</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <article class="proyecto-card-mobile">
+                    <figure class="proyecto-media-mobile">
+                        <img src="img/r6Proyecto.png" alt="R6 TierList">
+                    </figure>
+                    <div class="proyecto-body-mobile">
+                        <h4>R6 TierList</h4>
+                        <p>Proyecto web para organizar y visualizar una tier list de operadores de Rainbow Six Siege.</p>
+                        <ul class="proyecto-tags-mobile">
+                            <li>UI</li>
+                            <li>Tier List</li>
+                            <li>Responsive</li>
+                        </ul>
+                        <div class="proyecto-actions-mobile">
+                            <a class="proyecto-action-mobile" href="https://github.com/khiix/r6-tierlist" target="_blank"
+                                rel="noopener noreferrer">GitHub</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="proyecto-card-mobile">
+                    <figure class="proyecto-media-mobile">
+                        <img src="img/barberia_los_hermanos_card.png" alt="Barbería Los Hermanos">
+                    </figure>
+                    <div class="proyecto-body-mobile">
+                        <h4>Los Hermanos - Barbería</h4>
+                        <p>Web para barbería con reservas y diseño mobile-first.</p>
+                        <ul class="proyecto-tags-mobile">
+                            <li>Reservas</li>
+                            <li>Diseño Web</li>
+                            <li>Barbería</li>
+                        </ul>
+                        <div class="proyecto-actions-mobile">
+                            <a class="proyecto-action-mobile" href="https://barberia-814j2063c-khiixs-projects.vercel.app/"
+                                target="_blank" rel="noopener noreferrer">Index</a>
+                            <a class="proyecto-action-mobile"
+                                href="https://barberia-814j2063c-khiixs-projects.vercel.app/admin" target="_blank"
+                                rel="noopener noreferrer">Admin</a>
+                        </div>
+                    </div>
+                </article>
             </div>
 
         </section>

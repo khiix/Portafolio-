@@ -1,430 +1,291 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Christian Montes · Desarrollador Full Stack</title>
+  <meta name="description" content="Portfolio de Christian Montes, Desarrollador Full Stack especializado en backend sólido y frontend moderno.">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="stilo.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Outfit:wght@100..700&display=swap"
-        rel="stylesheet">
-
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-
-    <style>
-        .icono-habilidad {
-            width: clamp(16px, 1.2vw, 20px);
-            height: clamp(16px, 1.2vw, 20px);
-            margin-right: 0.8vw;
-            stroke: var(--colorLinia);
-            flex-shrink: 0;
-        }
-    </style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    <header>
-        <section class="header-controls">
-            <button class="menu-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"
-                aria-controls="site-nav">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <img src="img/logo.jpg" alt="logo">
-        </section>
-        <nav id="site-nav">
-            <div class="nav-brand" aria-hidden="true">
-                <img src="img/logo.jpg" alt="logo">
-            </div>
-            <a class="enlaceNav" href="#sobre-mi">Sobre mí</a>
-            <a class="enlaceNav" href="#habilidades">Habilidades</a>
-            <a class="enlaceNav" href="#tecnologias">Tecnologías</a>
-            <a class="enlaceNav" href="#proyectos">Proyectos</a>
-        </nav>
-    </header>
+<canvas id="stars"></canvas>
+<div class="bg-vignette"></div>
+<div class="scanlines"></div>
+<div class="cursor-ring"></div>
+<div class="cursor-dot"></div>
 
-    <main class="sobreMi" id="sobre-mi">
-        <h2>Sobre Mí</h2>
+<div class="shell">
 
-        <article>
-            <section>
-                <p>Desarrollador Full Stack Apasionado</p>
-                <p>
-                    Con más de 5 años de experiencia en el desarrollo web,
-                    me especializo en crear aplicaciones modernas,
-                    escalables
-                    y centradas en el usuario.
-                </p>
-                <p>
-                    Me apasiona aprender nuevas tecnologías y resolver
-                    problemas complejos. Disfruto trabajando en equipos
-                    colaborativos.
-                </p>
-                <a class="botonMain" href="Curriculum_Profesional_ChristianMontes.pdf"
-                    download="Curriculum_Profesional_ChristianMontes">Descargar CV
-                </a>
-            </section>
-            <img src="img/cm.png" alt="foto de un escritorio">
-        </article>
+<!-- ===================== NAV ===================== -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#hero" class="brand" data-cursor="">
+      <span class="mark"><span>CM</span></span>
+      <span><b>Christian Montes</b> <i>/ Full Stack</i></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about" data-cursor="">Sobre mí</a>
+      <a href="#experience" data-cursor="">Experiencia</a>
+      <a href="#tech" data-cursor="">Tecnologías</a>
+      <a href="#projects" data-cursor="">Proyectos</a>
+      <a href="#contact" class="nav-cta" data-cursor="">Contacto</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Menú"><span></span><span></span><span></span></button>
+  </div>
+</nav>
 
-        <article id="articleSobreMi">
-            <a href="https://github.com/khiix" target="_blank" rel="noopener noreferrer"
-                aria-label="Ver GitHub de Christian">
-                <img class="botonMainIcon" src="img/github (1).png" alt="logo GitHub">
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about">Sobre mí</a>
+  <a href="#experience">Experiencia</a>
+  <a href="#tech">Tecnologías</a>
+  <a href="#projects">Proyectos</a>
+  <a href="#contact">Contacto</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<header class="hero" id="hero">
+  <div class="wrap hero-inner">
+    <div class="greeting eyebrow">Hola, soy</div>
+    <h1><span class="type-wrap"><span id="typed"></span><span class="caret" id="caret">▍</span></span></h1>
+    <div class="role" id="role">Desarrollador Full Stack</div>
+    <p class="desc" id="desc">Construyo productos web reales. Backend sólido, frontend moderno, orientación a negocio.</p>
+    <div class="hero-actions" id="actions">
+      <a href="#projects" class="btn btn-primary" data-cursor="">
+        Ver proyectos
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+      </a>
+      <a href="Curriculum_Profesional_ChristianMontes.pdf" download="Curriculum_Profesional_ChristianMontes.pdf" class="btn btn-ghost" data-cursor="">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M8 11l4 4 4-4M5 21h14"></path></svg>
+        Descargar CV
+      </a>
+    </div>
+    <div class="hero-socials" id="socials">
+      <a href="https://github.com/khiix" target="_blank" rel="noopener" class="social" data-cursor="" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.5-.3-5.2-1.3-5.2-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17 5.3 18 5.6 18 5.6c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.2 5.7.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"></path></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/christian-montes-98749a2b2/" target="_blank" rel="noopener" class="social" data-cursor="" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.4H3.5V9h3.6v11.4ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7Z"></path></svg>
+      </a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll<div class="bar"></div></div>
+</header>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">01 — Sobre mí</span>
+      <h2 class="section-title">Construyo herramientas <span class="accent">que se usan de verdad.</span></h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p class="lead">Desarrollador Full Stack apasionado por construir productos reales — no demos, sino software que la gente usa cada día.</p>
+        <p>Mi camino no empezó en el código. Vengo de la <strong>hostelería y el soporte IT</strong>, y esa mezcla me dio algo que pocos perfiles técnicos tienen: entender al usuario y al negocio antes de escribir una sola línea.</p>
+        <p>Hoy trabajo de extremo a extremo — <strong>backend sólido con ASP.NET Core, frontend moderno con React y TypeScript</strong> — con una obsesión: que lo que construyo resuelva un problema concreto.</p>
+        <div class="meta-row">
+          <span class="chip"><b>◷</b> &nbsp;Alicante, España</span>
+          <span class="chip"><b>⬡</b> &nbsp;ASP.NET Core · React · TypeScript · PostgreSQL</span>
+        </div>
+      </div>
+      <div class="stats reveal">
+        <div class="stat" data-cursor=""><div class="num" data-count="3">0</div><div class="lbl">Proyectos en producción</div></div>
+        <div class="stat" data-cursor=""><div class="num" data-count="2">0</div><div class="lbl">Años desarrollando</div></div>
+        <div class="stat" data-cursor=""><div class="num" data-text="Full Stack">Full Stack</div><div class="lbl">Stack completo, de la BBDD a la UI</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== EXPERIENCE ===================== -->
+<section class="block" id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">02 — Trayectoria</span>
+      <h2 class="section-title">De la barra al <span class="accent">deploy.</span></h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-date">2024 — Presente</div>
+        <div class="tl-title"><span class="org">QuickPOS</span><span class="tag">Proyecto personal</span></div>
+        <div class="tl-role">Desarrollador Full Stack. Diseño y construyo un TPV web completo para hostelería — desde el modelo de datos en PostgreSQL hasta la interfaz en React + TypeScript sobre ASP.NET Core.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">2026</div>
+        <div class="tl-title"><span class="org">NTT Data</span><span class="tag">Prácticas</span></div>
+        <div class="tl-role">Desarrollo Low Code con Appian. Primer contacto con entornos empresariales reales, flujos de negocio y trabajo en equipo a escala.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">Feb 2023 — Ago 2024</div>
+        <div class="tl-title"><span class="org">Smurfit Kappa</span><span class="tag">Soporte IT</span></div>
+        <div class="tl-role">Soporte y resolución de incidencias técnicas. Aprendí a diagnosticar problemas reales bajo presión y a comunicarme con usuarios no técnicos.</div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-date">2019 — 2025</div>
+        <div class="tl-title"><span class="org">Cubarest S.L.</span><span class="tag">Hostelería</span></div>
+        <div class="tl-role">Años en sala que me enseñaron lo que de verdad necesita un negocio que vive del minuto — la semilla de QuickPOS.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TECH ===================== -->
+<section class="block" id="tech">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">03 — Stack</span>
+      <h2 class="section-title">Herramientas con las que <span class="accent">trabajo.</span></h2>
+    </div>
+    <div class="tech-cats">
+      <div class="tech-cat reveal">
+        <h3>Frontend</h3>
+        <div class="pills" data-stagger="">
+          <div class="pill" data-cursor=""><img src="img/react.svg" alt="">React</div>
+          <div class="pill" data-cursor=""><img src="img/typescript.svg" alt="">TypeScript</div>
+          <div class="pill" data-cursor=""><img src="img/javascript.svg" alt="">JavaScript</div>
+          <div class="pill" data-cursor=""><img src="img/vite.svg" alt="">Vite</div>
+          <div class="pill" data-cursor=""><img src="img/css3.svg" alt="">CSS3</div>
+        </div>
+      </div>
+      <div class="tech-cat reveal">
+        <h3>Backend</h3>
+        <div class="pills" data-stagger="">
+          <div class="pill" data-cursor=""><img src="img/aspnet.svg" alt="">ASP.NET Core</div>
+          <div class="pill" data-cursor=""><img src="img/csharp.svg" alt="">C#</div>
+          <div class="pill" data-cursor=""><img src="img/nodejs.svg" alt="">Node.js</div>
+        </div>
+      </div>
+      <div class="tech-cat reveal">
+        <h3>Base de datos</h3>
+        <div class="pills" data-stagger="">
+          <div class="pill" data-cursor=""><img src="img/postgresql.svg" alt="">PostgreSQL</div>
+          <div class="pill" data-cursor=""><img src="img/mysql.svg" alt="">MySQL</div>
+          <div class="pill" data-cursor=""><img src="img/mariadb.svg" alt="">MariaDB</div>
+        </div>
+      </div>
+      <div class="tech-cat reveal">
+        <h3>Herramientas</h3>
+        <div class="pills" data-stagger="">
+          <div class="pill" data-cursor=""><img src="img/git.svg" alt="">Git</div>
+          <div class="pill" data-cursor=""><img src="img/docker.svg" alt="">Docker</div>
+          <div class="pill" data-cursor=""><img class="inv" src="img/vercel.svg" alt="">Vercel</div>
+          <div class="pill" data-cursor=""><img src="img/figma.svg" alt="">Figma</div>
+          <div class="pill" data-cursor=""><span class="ic">A</span>Appian</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROJECTS ===================== -->
+<section class="block" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">04 — Trabajo</span>
+      <h2 class="section-title">Proyectos <span class="accent">en marcha.</span></h2>
+    </div>
+    <div class="proj-grid">
+
+      <article class="proj reveal" data-cursor="">
+        <div class="proj-thumb">
+          <div class="glow"></div><div class="grid-bg"></div>
+          <img class="logo" src="img/quickpos_logo.png" alt="QuickPOS" loading="lazy">
+          <span class="pkind">TPV · SaaS</span>
+          <div class="proj-status"><span class="dot"></span>En beta</div>
+        </div>
+        <div class="proj-body">
+          <h3>QuickPOS</h3>
+          <p>TPV web para hostelería. Gestión de comandas, mesas y caja en tiempo real, pensado desde la experiencia en sala.</p>
+          <div class="proj-tags"><span>ASP.NET Core</span><span>React</span><span>TypeScript</span><span>PostgreSQL</span></div>
+          <div class="proj-links">
+            <span class="plink demo" style="opacity:.55;cursor:default" data-cursor="">● Próximamente</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="proj reveal" data-cursor="">
+        <div class="proj-thumb">
+          <img class="cover" src="img/r6tierlist_cover.png" alt="R6 TierList" loading="lazy">
+          <div class="scrim"></div>
+          <span class="pkind">Web App</span>
+        </div>
+        <div class="proj-body">
+          <h3>R6 TierList</h3>
+          <p>Tier list interactiva de operadores de Rainbow Six Siege. Drag, ordenación y diseño responsive, full vanilla.</p>
+          <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <div class="proj-links">
+            <a href="https://github.com/khiix/r6-tierlist" target="_blank" rel="noopener" class="plink code" data-cursor="">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.5-.3-5.2-1.3-5.2-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17 5.3 18 5.6 18 5.6c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.2 5.7.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"></path></svg>
+              GitHub
             </a>
-            <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Ver LinkedIn de Christian">
-                <img class="botonMainIcon" src="img/linkedin.png" alt="logo LinkedIn">
+          </div>
+        </div>
+      </article>
+
+      <article class="proj reveal" data-cursor="">
+        <div class="proj-thumb">
+          <img class="cover" src="img/barberia_cover.png" alt="Los Hermanos Barbería" loading="lazy">
+          <div class="scrim"></div>
+          <span class="pkind">Web · Reservas</span>
+        </div>
+        <div class="proj-body">
+          <h3>Los Hermanos Barbería</h3>
+          <p>Web de barbería con sistema de reservas online. Landing, agenda y flujo de cita, desplegada en Vercel.</p>
+          <div class="proj-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vercel</span></div>
+          <div class="proj-links">
+            <a href="https://barberialoshermanos.vercel.app/" target="_blank" rel="noopener" class="plink demo" data-cursor="">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"></path></svg>
+              Demo
             </a>
-        </article>
+          </div>
+        </div>
+      </article>
 
-        <!-- HABILIDADES -->
-        <section id="habilidades">
-            <h3>Habilidades</h3>
+    </div>
+  </div>
+</section>
 
-            <section class="habilidades-container">
+<!-- ===================== CONTACT ===================== -->
+<section class="contact" id="contact">
+  <div class="wrap contact-inner reveal">
+    <span class="eyebrow">05 — Contacto</span>
+    <h2>¿Tienes un proyecto<br>en mente? <span class="accent">Hablemos.</span></h2>
+    <p class="sub">Cuéntame qué quieres construir. Respondo rápido.</p>
+    <button class="email-btn" id="emailBtn" data-cursor="">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg>
+      cristiandarien100@gmail.com
+      <span class="copy" id="copyHint">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="9" width="12" height="12" rx="2"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+        Copiar
+      </span>
+    </button>
+    <div class="contact-socials">
+      <a href="https://github.com/khiix" target="_blank" rel="noopener" class="social" data-cursor="" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.5-.3-5.2-1.3-5.2-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0C17 5.3 18 5.6 18 5.6c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.2 5.7.4.3.8 1 .8 2.1v3.1c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5Z"></path></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/christian-montes-98749a2b2/" target="_blank" rel="noopener" class="social" data-cursor="" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 20.4h-3.6v-5.6c0-1.3 0-3-1.9-3s-2.1 1.4-2.1 2.9v5.7H9.3V9h3.4v1.6h.1c.5-.9 1.6-1.9 3.4-1.9 3.6 0 4.3 2.4 4.3 5.5v6.2ZM5.3 7.4a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2ZM7.1 20.4H3.5V9h3.6v11.4ZM22.2 0H1.8C.8 0 0 .8 0 1.7v20.6c0 .9.8 1.7 1.8 1.7h20.4c1 0 1.8-.8 1.8-1.7V1.7c0-.9-.8-1.7-1.8-1.7Z"></path></svg>
+      </a>
+    </div>
+    <div class="availability"><span class="dot"></span> Disponible para proyectos freelance y posiciones Full Stack</div>
+  </div>
+  <div class="wrap">
+    <footer>
+      <span>© 2025 Christian Montes — Alicante, España</span>
+      <span>Diseñado &amp; construido a mano · vanilla JS</span>
+    </footer>
+  </div>
+</section>
 
-                <!-- FRONTEND -->
-                <article class="tarjeta">
-                    <h3><i data-lucide="layout"></i> Frontend</h3>
+</div><!-- /shell -->
 
-                    <section class="habilidad-item">
-                        <span><i data-lucide="atom" class="icono-habilidad"></i> React</span>
-                        <figure class="barra-progreso">
-                            <div class="progreso" style="width:95%"></div>
-                        </figure>
-                        <span>95%</span>
-                    </section>
+<div class="toast" id="toast">Email copiado al portapapeles</div>
 
-                    <section class="habilidad-item">
-                        <span><i data-lucide="file-code" class="icono-habilidad"></i>
-                            JavaScript</span>
-                        <figure class="barra-progreso">
-                            <div class="progreso" style="width:90%"></div>
-                        </figure>
-                        <span>90%</span>
-                    </section>
-
-                    <section class="habilidad-item">
-                        <span><i data-lucide="layers" class="icono-habilidad"></i> Vite</span>
-                        <figure class="barra-progreso">
-                            <div class="progreso" style="width:70%"></div>
-                        </figure>
-                        <span>70%</span>
-                    </section>
-
-                    <section class="habilidad-item">
-                        <span><i data-lucide="palette" class="icono-habilidad"></i> CSS</span>
-                        <figure class="barra-progreso">
-                            <div class="progreso" style="width:95%"></div>
-                        </figure>
-                        <span>95%</span>
-                    </section>
-                </article>
-
-                <!-- BACKEND -->
-                <article class="tarjeta">
-                    <h3><i data-lucide="server"></i> Backend</h3>
-
-                    <section class="habilidad-item">
-                        <span><i data-lucide="cpu" class="icono-habilidad"></i> Node.js</span>
-                        <figure class="barra-progreso">
-                            <div class="progreso" style="width:80%"></div>
-                        </figure>
-                        <span>80%</span>
-                    </section>
-
-                    <section class="habilidad-item">
-                        <span><i data-lucide="database" class="icono-habilidad"></i>
-                            PostgreSQL</span>
-                        <figure class="barra-progreso">
-                            <div class="progreso" style="width:80%"></div>
-                        </figure>
-                        <span>80%</span>
-                    </section>
-
-                    <section class="habilidad-item">
-                        <span><i data-lucide="database" class="icono-habilidad"></i> MySQL</span>
-                        <figure class="barra-progreso">
-                            <div class="progreso" style="width:95%"></div>
-                        </figure>
-                        <span>95%</span>
-                    </section>
-
-                    <section class="habilidad-item">
-                        <span><i data-lucide="database" class="icono-habilidad"></i>MariaDB</span>
-                        <figure class="barra-progreso">
-                            <div class="progreso" style="width:75%"></div>
-                        </figure>
-                        <span>75%</span>
-                    </section>
-                </article>
-
-                <!-- HERRAMIENTAS -->
-                <article class="tarjeta">
-                    <h3><i data-lucide="wrench"></i> Herramientas</h3>
-
-                    <section class="habilidad-item">
-                        <span><i data-lucide="git-branch" class="icono-habilidad"></i> Git</span>
-                        <figure class="barra-progreso">
-                            <div class="progreso" style="width:95%"></div>
-                        </figure>
-                        <span>95%</span>
-                    </section>
-
-                    <section class="habilidad-item">
-                        <span><i data-lucide="container" class="icono-habilidad"></i> Docker</span>
-                        <figure class="barra-progreso">
-                            <div class="progreso" style="width:75%"></div>
-                        </figure>
-                        <span>75%</span>
-                    </section>
-
-                    <section class="habilidad-item">
-                        <span><i data-lucide="cloud" class="icono-habilidad"></i> AWS</span>
-                        <figure class="barra-progreso">
-                            <div class="progreso" style="width:80%"></div>
-                        </figure>
-                        <span>80%</span>
-                    </section>
-
-                    <section class="habilidad-item">
-                        <span><i data-lucide="pen-tool" class="icono-habilidad"></i> Figma</span>
-                        <figure class="barra-progreso">
-                            <div class="progreso" style="width:85%"></div>
-                        </figure>
-                        <span>85%</span>
-                    </section>
-                </article>
-
-            </section>
-        </section>
-
-        <!-- TECNOLOGÍAS -->
-        <section id="tecnologias">
-            <h3>Tecnologías</h3>
-            <div class="tecnologias-grid">
-                <span class="tecnica">React</span>
-                <span class="tecnica">JavaScript</span>
-                <span class="tecnica">Node.js</span>
-                <span class="tecnica">PostgreSQL</span>
-                <span class="tecnica">MongoDB</span>
-                <span class="tecnica">Tailwind CSS</span>
-                <span class="tecnica">Git</span>
-                <span class="tecnica">Docker</span>
-                <span class="tecnica">AWS</span>
-                <span class="tecnica">Figma</span>
-                <span class="tecnica">Vite</span>
-                <span class="tecnica">C#</span>
-                <span class="tecnica">MySQL</span>
-                <span class="tecnica">MariaDB</span>
-            </div>
-        </section>
-        <!-- PROYECTOS -->
-
-        <section id="proyectos">
-            <h3>Proyectos</h3>
-            <div class="carousel" aria-roledescription="carousel">
-
-                <!-- BOTÓN IZQUIERDA -->
-                <button class="carousel__button prev" aria-label="Proyecto anterior">
-                    &lsaquo;
-                </button>
-
-                <!-- TRACK -->
-                <div class="carousel__track-container">
-                    <ul class="carousel__track">
-
-                        <!-- SLIDE 1 -->
-                        <li class="carousel__slide">
-                            <article class="proyecto-card">
-                                <figure class="proyecto-media">
-                                    <img src="img/quickpos_card.png" alt="QuickPos">
-
-                                    <div class="proyecto-hover">
-                                        <a class="proyecto-icon" href="#" aria-label="Demo">
-                                            &#128279;
-                                        </a>
-                                        <a class="proyecto-icon" href="#" aria-label="GitHub">
-                                            &#128025;
-                                        </a>
-                                    </div>
-                                </figure>
-
-                                <div class="proyecto-body">
-                                    <h4>QuickPos - TPV para Bares</h4>
-                                    <p>
-                                        Aplicación TPV para gestionar pedidos, mesas y cobros
-                                        en bares y cafeterías.
-                                    </p>
-                                    <p>En proceso de desarrollo.</p>
-                                    <ul class="proyecto-tags">
-                                        <li>TPV</li>
-                                        <li>Gestión</li>
-                                        <li>Bares</li>
-                                    </ul>
-                                </div>
-                            </article>
-                        </li>
-
-                        <!-- SLIDE 2 -->
-                        <li class="carousel__slide">
-                            <article class="proyecto-card">
-                                <figure class="proyecto-media">
-                                    <img src="img/r6Proyecto.png" alt="R6 TierList">
-
-                                    <div class="proyecto-hover">
-                                        <a class="proyecto-icon" href="https://github.com/khiix/r6-tierlist"
-                                            target="_blank" rel="noopener noreferrer" aria-label="GitHub R6 TierList">
-                                            &#128025;
-                                        </a>
-                                    </div>
-                                </figure>
-
-                                <div class="proyecto-body">
-                                    <h4>R6 TierList</h4>
-                                    <p>
-                                        Proyecto web para organizar y visualizar una tier list de operadores
-                                        de Rainbow Six Siege.
-                                    </p>
-                                    <ul class="proyecto-tags">
-                                        <li>UI</li>
-                                        <li>Tier List</li>
-                                        <li>Responsive</li>
-                                    </ul>
-                                    <div class="proyecto-actions" aria-label="Enlaces del proyecto">
-                                        <a class="proyecto-action" href="https://github.com/khiix/r6-tierlist"
-                                            target="_blank" rel="noopener noreferrer">
-                                            GitHub
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-                        </li>
-
-                        <!-- SLIDE 3 -->
-                        <li class="carousel__slide">
-                            <article class="proyecto-card">
-                                <figure class="proyecto-media">
-                                    <img src="img/barberia_los_hermanos_card.png" alt="Barbería">
-
-                                    <div class="proyecto-hover">
-                                        <a class="proyecto-icon" href="#">
-                                            &#128279;
-                                        </a>
-                                    </div>
-                                </figure>
-
-                                <div class="proyecto-body">
-                                    <h4>Los Hermanos - Barbería</h4>
-                                    <p>
-                                        Web para barbería con reservas y diseño mobile-first.
-                                    </p>
-                                    <ul class="proyecto-tags">
-                                        <li>Reservas</li>
-                                        <li>Diseño Web</li>
-                                        <li>Barbería</li>
-                                    </ul>
-
-                                    <div class="proyecto-actions" aria-label="Enlaces del proyecto">
-                                        <a class="proyecto-action"
-                                            href="https://barberia-814j2063c-khiixs-projects.vercel.app/"
-                                            target="_blank" rel="noopener noreferrer">
-                                            Index
-                                        </a>
-                                        <a class="proyecto-action"
-                                            href="https://barberia-814j2063c-khiixs-projects.vercel.app/admin"
-                                            target="_blank" rel="noopener noreferrer">
-                                            Admin
-                                        </a>
-                                    </div>
-                                </div>
-                            </article>
-                        </li>
-
-                    </ul>
-                </div>
-
-                <!-- BOTÓN DERECHA -->
-                <button class="carousel__button next" aria-label="Siguiente proyecto">
-                    &rsaquo;
-                </button>
-
-                <!-- INDICADORES -->
-                <div class="carousel__nav"></div>
-            </div>
-
-            <div class="proyectos-mobile-grid" aria-label="Proyectos en tarjetas para móvil">
-                <article class="proyecto-card-mobile">
-                    <figure class="proyecto-media-mobile">
-                        <img src="img/quickpos_card.png" alt="QuickPos">
-                    </figure>
-                    <div class="proyecto-body-mobile">
-                        <h4>QuickPos - TPV para Bares</h4>
-                        <p>Aplicación TPV para gestionar pedidos, mesas y cobros en bares y cafeterías.</p>
-                        <p>En proceso de desarrollo.</p>
-                        <ul class="proyecto-tags-mobile">
-                            <li>TPV</li>
-                            <li>Gestión</li>
-                            <li>Bares</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <article class="proyecto-card-mobile">
-                    <figure class="proyecto-media-mobile">
-                        <img src="img/r6Proyecto.png" alt="R6 TierList">
-                    </figure>
-                    <div class="proyecto-body-mobile">
-                        <h4>R6 TierList</h4>
-                        <p>Proyecto web para organizar y visualizar una tier list de operadores de Rainbow Six Siege.</p>
-                        <ul class="proyecto-tags-mobile">
-                            <li>UI</li>
-                            <li>Tier List</li>
-                            <li>Responsive</li>
-                        </ul>
-                        <div class="proyecto-actions-mobile">
-                            <a class="proyecto-action-mobile" href="https://github.com/khiix/r6-tierlist" target="_blank"
-                                rel="noopener noreferrer">GitHub</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="proyecto-card-mobile">
-                    <figure class="proyecto-media-mobile">
-                        <img src="img/barberia_los_hermanos_card.png" alt="Barbería Los Hermanos">
-                    </figure>
-                    <div class="proyecto-body-mobile">
-                        <h4>Los Hermanos - Barbería</h4>
-                        <p>Web para barbería con reservas y diseño mobile-first.</p>
-                        <ul class="proyecto-tags-mobile">
-                            <li>Reservas</li>
-                            <li>Diseño Web</li>
-                            <li>Barbería</li>
-                        </ul>
-                        <div class="proyecto-actions-mobile">
-                            <a class="proyecto-action-mobile" href="https://barberia-814j2063c-khiixs-projects.vercel.app/"
-                                target="_blank" rel="noopener noreferrer">Index</a>
-                            <a class="proyecto-action-mobile"
-                                href="https://barberia-814j2063c-khiixs-projects.vercel.app/admin" target="_blank"
-                                rel="noopener noreferrer">Admin</a>
-                        </div>
-                    </div>
-                </article>
-            </div>
-
-        </section>
-    </main>
-    <script src="script.js"></script>
-    <script>
-        lucide.createIcons();
-    </script>
+<script src="script.js"></script>
 </body>
-
 </html>

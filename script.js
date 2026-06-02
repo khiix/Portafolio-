@@ -2,7 +2,7 @@
 /* ============================================================
    1. PARTICLE / CONSTELLATION FIELD
    ============================================================ */
-(function(){
+try{(function(){
   const canvas=document.getElementById('stars');
   const ctx=canvas.getContext('2d');
   let w,h,dpr,particles=[],mouse={x:-999,y:-999},scrollY=0;
@@ -37,7 +37,6 @@
       p.x+=p.vx;p.y+=p.vy;p.tw+=.02;
       if(p.x<0)p.x=w;if(p.x>w)p.x=0;
       if(p.y<0)p.y=h;if(p.y>h)p.y=0;
-      // gentle mouse repulsion / attraction
       const dx=p.x-mx,dy=p.y-my,dist=Math.hypot(dx,dy);
       if(dist<140*dpr){
         const f=(140*dpr-dist)/(140*dpr);
@@ -51,7 +50,6 @@
         :`rgba(180,178,220,${.22+tw*.35})`;
       ctx.fill();
     }
-    // constellation links
     for(let i=0;i<particles.length;i++){
       for(let j=i+1;j<particles.length;j++){
         const a=particles[i],b=particles[j];
@@ -63,7 +61,6 @@
           ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.stroke();
         }
       }
-      // link to cursor
       const a=particles[i];
       const dxm=a.x-mx,dym=a.y-my,dm=Math.hypot(dxm,dym);
       if(dm<160*dpr){
@@ -79,12 +76,12 @@
   addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
   addEventListener('mouseout',()=>{mouse.x=-999;mouse.y=-999;});
   resize();draw();
-})();
+})();}catch(e){console.warn('particles:',e);}
 
 /* ============================================================
    2. CUSTOM CURSOR
    ============================================================ */
-(function(){
+try{(function(){
   if(matchMedia('(pointer:coarse)').matches)return;
   const dot=document.querySelector('.cursor-dot');
   const ring=document.querySelector('.cursor-ring');
@@ -105,12 +102,12 @@
   document.addEventListener('mouseout',e=>{
     if(e.target.closest('[data-cursor]'))ring.classList.remove('hover');
   });
-})();
+})();}catch(e){console.warn('cursor:',e);}
 
 /* ============================================================
    3. HERO INTRO — typewriter + staged fades
    ============================================================ */
-(function(){
+try{(function(){
   const name="Christian Montes";
   const typed=document.getElementById('typed');
   const caret=document.getElementById('caret');
@@ -120,8 +117,9 @@
     document.getElementById('desc').classList.add('in');
     document.getElementById('actions').classList.add('in');
     document.getElementById('socials').classList.add('in');
-    setTimeout(()=>caret.classList.add('hide'),2600);
+    if(caret)setTimeout(()=>caret.classList.add('hide'),2600);
   }
+  if(!typed){stage();return;}
   if(reduce){typed.textContent=name;stage();return;}
   let i=0;
   function type(){
@@ -132,12 +130,19 @@
     }else{stage();}
   }
   setTimeout(type,500);
-})();
+})();}catch(e){
+  console.warn('typewriter:',e);
+  // fallback: show all hero elements anyway
+  ['role','desc','actions','socials'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.classList.add('in');
+  });
+}
 
 /* ============================================================
    4. NAV — scroll state, scrollspy, mobile, smooth offset
    ============================================================ */
-(function(){
+try{(function(){
   const nav=document.getElementById('nav');
   const links=[...document.querySelectorAll('#navLinks a[href^="#"]')];
   const burger=document.getElementById('burger');
@@ -157,7 +162,6 @@
     document.body.style.overflow='';
   }));
 
-  // scrollspy
   const sections=links.map(l=>document.querySelector(l.getAttribute('href'))).filter(Boolean);
   const spy=new IntersectionObserver(es=>{
     es.forEach(e=>{
@@ -168,22 +172,20 @@
     });
   },{rootMargin:'-45% 0px -50% 0px'});
   sections.forEach(s=>spy.observe(s));
-})();
+})();}catch(e){console.warn('nav:',e);}
 
 /* ============================================================
    5. SCROLL REVEAL + tech pill stagger + counters
    ============================================================ */
-(function(){
+try{(function(){
   const io=new IntersectionObserver(es=>{
     es.forEach(e=>{
       if(e.isIntersecting){
         e.target.classList.add('in');
-        // pill stagger
         if(e.target.querySelector&&e.target.matches('.tech-cat')){
           const pills=e.target.querySelectorAll('.pill');
           pills.forEach((p,i)=>setTimeout(()=>p.classList.add('in'),i*60));
         }
-        // counters
         const counters=e.target.querySelectorAll?e.target.querySelectorAll('[data-count]'):[];
         counters.forEach(c=>animateCount(c));
         io.unobserve(e.target);
@@ -202,12 +204,12 @@
       el.textContent=cur;
     },40);
   }
-})();
+})();}catch(e){console.warn('reveal:',e);}
 
 /* ============================================================
    6. HERO PARALLAX
    ============================================================ */
-(function(){
+try{(function(){
   const hero=document.querySelector('.hero-inner');
   const stars=document.getElementById('stars');
   addEventListener('scroll',()=>{
@@ -218,12 +220,12 @@
       stars.style.transform=`translateY(${y*0.06}px)`;
     }
   });
-})();
+})();}catch(e){console.warn('parallax:',e);}
 
 /* ============================================================
    7. COPY EMAIL
    ============================================================ */
-(function(){
+try{(function(){
   const btn=document.getElementById('emailBtn');
   const hint=document.getElementById('copyHint');
   const toast=document.getElementById('toast');
@@ -242,9 +244,9 @@
       hint.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg> Copiar';
     },2200);
   });
-})();
+})();}catch(e){console.warn('email:',e);}
 
 /* image fallback for broken devicons */
-document.querySelectorAll('.pill img').forEach(img=>{
+try{document.querySelectorAll('.pill img').forEach(img=>{
   img.addEventListener('error',()=>{img.style.display='none';});
-});
+});}catch(e){}

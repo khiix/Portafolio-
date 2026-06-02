@@ -214,16 +214,19 @@ section{position:relative}
   font-size:clamp(20px,3.2vw,34px);color:var(--accent);
   letter-spacing:-.01em;
   opacity:0;transform:translateY(18px);
+  animation:fadeUp .9s var(--ease) 3s forwards;
 }
 .hero .role.in{animation:fadeUp .9s var(--ease) forwards}
 .hero .desc{
   max-width:560px;color:var(--muted);font-size:clamp(16px,1.6vw,18px);
   margin:26px 0 0;opacity:0;transform:translateY(18px);
+  animation:fadeUp .9s var(--ease) 3.15s forwards;
 }
 .hero .desc.in{animation:fadeUp .9s var(--ease) .15s forwards}
 
 .hero-actions{display:flex;gap:16px;flex-wrap:wrap;margin-top:40px;
-  opacity:0;transform:translateY(18px)}
+  opacity:0;transform:translateY(18px);
+  animation:fadeUp .9s var(--ease) 3.3s forwards}
 .hero-actions.in{animation:fadeUp .9s var(--ease) .3s forwards}
 
 .btn{
@@ -245,7 +248,8 @@ section{position:relative}
   box-shadow:0 0 26px rgba(0,229,195,.2);transform:translateY(-2px)}
 
 .hero-socials{display:flex;gap:14px;margin-top:42px;
-  opacity:0;transform:translateY(18px)}
+  opacity:0;transform:translateY(18px);
+  animation:fadeUp .9s var(--ease) 3.45s forwards}
 .hero-socials.in{animation:fadeUp .9s var(--ease) .45s forwards}
 .social{
   width:46px;height:46px;border:1px solid var(--line-soft);border-radius:11px;
